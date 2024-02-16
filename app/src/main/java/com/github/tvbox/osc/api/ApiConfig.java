@@ -330,7 +330,9 @@ public class ApiConfig {
                 sb.setExt(DefaultConfig.safeJsonString(obj, "ext", ""));
             }
             sb.setJar(DefaultConfig.safeJsonString(obj, "jar", ""));
-            sb.setPlayerType(DefaultConfig.safeJsonInt(obj, "playerType", -1));
+            // 不是很懂这个设计，来自订阅的播放器设置居然会覆盖本地设置，可能导致播放时兼容性问题，禁用
+            // sb.setPlayerType(DefaultConfig.safeJsonInt(obj, "playerType", -1));
+            sb.setPlayerType(-1);
             sb.setCategories(DefaultConfig.safeJsonStringList(obj, "categories"));
             sb.setClickSelector(DefaultConfig.safeJsonString(obj, "click", ""));
             if (firstSite == null && sb.getHide() == 0)
